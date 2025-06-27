@@ -2,6 +2,8 @@ syntax = "proto3";
 
 service InventoryService {
     rpc SearchAllProducts(Empty) returns (ProductsResponse) {}
+    // PASSO 1: Declarar a assinatura da nova operação.
+    rpc SearchProductByID(Payload) returns (ProductResponse) {}
 }
 
 message Empty{}
@@ -17,4 +19,9 @@ message ProductResponse {
 
 message ProductsResponse {
     repeated ProductResponse products = 1;
+}
+
+// PASSO 2: Incluir a declaração do tipo do objeto Payload.
+message Payload {
+    int32 id = 1;
 }
